@@ -40,24 +40,22 @@
 
     <FlyoutItem
         Title="Page 1"
+        Icon="dotnet_bot.png"
         IsVisible="{OnIdiom Desktop=True,
                             Phone=False}">
         <ShellContent
             ContentTemplate="{DataTemplate view:Page_1}"
-            Icon="dotnet_bot.png"
-            Route="HomePage"
-            Shell.NavBarIsVisible="False" />
+            Route="Page_1" />
     </FlyoutItem>
 
     <FlyoutItem
         Title="Page 2"
-        Icon="stations.png"
+        Icon="dotnet_bot.png"
         IsVisible="{OnIdiom Desktop=True,
                             Phone=False}">
         <ShellContent
             ContentTemplate="{DataTemplate view:Page_2}"
-            Icon="dotnet_bot.png"
-            Route="ChargingStationsMapPage" />
+            Route="Page_2" />
     </FlyoutItem>
 
 </Shell>
