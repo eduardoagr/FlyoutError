@@ -10,7 +10,7 @@
     xmlns:vm="clr-namespace:FlyoutError.ViewModels"
     x:Name="shelly"
     x:DataType="vm:AppShellViewModel"
-    Shell.FlyoutBehavior="Locked">
+       Shell.FlyoutBehavior="{OnIdiom Desktop=Locked, Phone=flyout}">
 
     <Shell.Behaviors>
         <toolkit:EventToCommandBehavior
