@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FlyoutError"
+    xmlns:rex="clr-namespace:FlyoutError.Resources"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:view="clr-namespace:FlyoutError.View"
     xmlns:vm="clr-namespace:FlyoutError.ViewModels"
@@ -39,7 +40,7 @@
         Shell.FlyoutItemIsVisible="False" />
 
     <FlyoutItem
-        Title="Page 1"
+        Title="{x:Static rex:AppResource._1}"
         Icon="dotnet_bot.png"
         IsVisible="{OnIdiom Desktop=True,
                             Phone=False}">
@@ -49,7 +50,7 @@
     </FlyoutItem>
 
     <FlyoutItem
-        Title="Page 2"
+        Title="{x:Static rex:AppResource._2}"
         Icon="dotnet_bot.png"
         IsVisible="{OnIdiom Desktop=True,
                             Phone=False}">
