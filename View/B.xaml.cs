@@ -1,8 +1,8 @@
 namespace FlyoutError.View;
 
-public partial class Page_2 : ContentPage
+public partial class B : ContentPage
 {
-	public Page_2()
+	public B()
 	{
 		InitializeComponent();
 	}

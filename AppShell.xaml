@@ -4,13 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FlyoutError"
+    xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
     xmlns:rex="clr-namespace:FlyoutError.Resources"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:view="clr-namespace:FlyoutError.View"
     xmlns:vm="clr-namespace:FlyoutError.ViewModels"
     x:Name="shelly"
     x:DataType="vm:AppShellViewModel"
-       Shell.FlyoutBehavior="{OnIdiom Desktop=Locked, Phone=flyout}">
+    Shell.FlyoutBehavior="{OnIdiom Desktop=Locked,
+                                   Phone=Flyout}"
+    Shell.NavBarIsVisible="False">
 
     <Shell.Behaviors>
         <toolkit:EventToCommandBehavior
@@ -21,17 +24,58 @@
 
     <Shell.FlyoutHeader>
         <Grid>
-            <Switch
-                Margin="10"
-                IsToggled="{Binding IsCompactMode}">
-                <Switch.Behaviors>
-                    <toolkit:EventToCommandBehavior
-                        Command="{Binding ToogleSwitchCommand}"
-                        EventName="Toggled" />
-                </Switch.Behaviors>
-            </Switch>
+            <Image
+                x:Name="ConfigMenu"
+                Margin="10,0,0,15"
+                HeightRequest="48"
+                HorizontalOptions="Start"
+                Source="dotnet_bot.png"
+                WidthRequest="48">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenMenuCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <popup:SfPopup
+                Padding="20"
+                AbsoluteY="10"
+                AutoSizeMode="Both"
+                IsOpen="{Binding IsMenuPopUpOen}"
+                RelativePosition="AlignBottomLeft"
+                RelativeView="{x:Reference ConfigMenu}"
+                ShowHeader="False"
+                ShowOverlayAlways="False">
+                <popup:SfPopup.PopupStyle>
+                    <popup:PopupStyle CornerRadius="0" />
+                </popup:SfPopup.PopupStyle>
+                <popup:SfPopup.ContentTemplate>
+                    <DataTemplate>
+                        <Grid
+                            BackgroundColor="#908686"
+                            ColumnDefinitions="*,*"
+                            HorizontalOptions="Fill">
+                            <Label
+                                Margin="10,0,0,0"
+                                Text="{x:Static rex:AppResource.CompactMode}"
+                                VerticalTextAlignment="Center" />
+                            <local:CustomSwitch
+                                Grid.Column="1"
+                                IsToggled="{Binding IsCompactMode}"
+                                OnColor="Green">
+                                <Switch.Behaviors>
+                                    <toolkit:EventToCommandBehavior
+                                        Command="{Binding ToogleSwitchCommand}"
+                                        CommandParameter="{Binding IsCompactMode}"
+                                        EventName="Toggled" />
+                                </Switch.Behaviors>
+                            </local:CustomSwitch>
+                        </Grid>
+                    </DataTemplate>
+                </popup:SfPopup.ContentTemplate>
+            </popup:SfPopup>
         </Grid>
     </Shell.FlyoutHeader>
+
+
 
     <ShellContent
         Title="Home"
@@ -45,7 +89,7 @@
         IsVisible="{OnIdiom Desktop=True,
                             Phone=False}">
         <ShellContent
-            ContentTemplate="{DataTemplate view:Page_1}"
+            ContentTemplate="{DataTemplate view:A}"
             Route="Page_1" />
     </FlyoutItem>
 
@@ -55,7 +99,7 @@
         IsVisible="{OnIdiom Desktop=True,
                             Phone=False}">
         <ShellContent
-            ContentTemplate="{DataTemplate view:Page_2}"
+            ContentTemplate="{DataTemplate view:B}"
             Route="Page_2" />
     </FlyoutItem>
 

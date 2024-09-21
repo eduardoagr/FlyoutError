@@ -77,5 +77,14 @@ namespace FlyoutError.Resources {
                 return ResourceManager.GetString("2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compact mode.
+        /// </summary>
+        internal static string CompactMode {
+            get {
+                return ResourceManager.GetString("CompactMode", resourceCulture);
+            }
+        }
     }
 }

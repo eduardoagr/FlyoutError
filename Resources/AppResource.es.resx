@@ -123,4 +123,7 @@
   <data name="2" xml:space="preserve">
     <value>Pagina 2</value>
   </data>
+  <data name="CompactMode" xml:space="preserve">
+    <value>Compact mode</value>
+  </data>
 </root>
